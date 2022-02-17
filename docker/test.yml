@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  discord-bot:
+    image: 'discord-bot'
+    command: npm run dev
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: none
+    environment:
+      - TIER=TEST
+      - TZ=America/New_York
+    networks:
+      - bridge
+    ports:
+      - '8001:8001'
+      - '9229:9229'
+    secrets:
+      - source: discord-test-application-client-id
+        target: CLIENT_ID
+        uid: '235'
+        gid: '235'
+        mode: 0600
+      - source: discord-test-server-guild-id
+        target: GUILD_ID
+        uid: '235'
+        gid: '235'
+        mode: 0600
+      - source: discord-test-bot-token
+        target: TOKEN
+        uid: '235'
+        gid: '235'
+        mode: 0600
+    volumes:
+      - ../src:/src
+networks:
+  bridge:
+secrets:
+  discord-test-application-client-id:
+    external: true
+  discord-test-server-guild-id:
+    external: true
+  discord-test-bot-token:
+    external: true
