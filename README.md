@@ -12,7 +12,7 @@ Project organization is based around the [discord.js Guide](https://discordjs.gu
 ## Build Instructions
 In order to successfully build and deploy your Discord bot, you **must** [set up a bot application](https://discordjs.guide/preparations/setting-up-a-bot-application.html) and [add the bot to your server](https://discordjs.guide/preparations/adding-your-bot-to-servers.html).
 
-It is **highly** encouraged that you **DO NOT** use your production server for active deployment. Create a test server using your server template.
+It is **highly** encouraged that you **DO NOT** use your production server for active development. Create a test server using your server template.
 
 ### Local Build
 1. Copy the included `.env.example` file and name the new file as `.env`.
