@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  discord-bot:
+    image: 'discord-bot'
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: none
+    environment:
+      - TIER=PROD
+      - TZ=America/New_York
+    networks:
+      - bridge
+    ports:
+      - '8000:8000'
+    secrets:
+      - source: discord-application-client-id
+        target: CLIENT_ID
+        uid: '235'
+        gid: '235'
+        mode: 0600
+      - source: discord-server-guild-id
+        target: GUILD_ID
+        uid: '235'
+        gid: '235'
+        mode: 0600
+      - source: discord-bot-token
+        target: TOKEN
+        uid: '235'
+        gid: '235'
+        mode: 0600
+networks:
+  bridge:
+secrets:
+  discord-application-client-id:
+    external: true
+  discord-server-guild-id:
+    external: true
+  discord-bot-token:
+    external: true
