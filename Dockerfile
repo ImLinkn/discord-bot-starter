@@ -1,4 +1,4 @@
-FROM node:16.14.0
+FROM node:16.14.2
 LABEL maintainer="imlinkn"
 COPY ["package.json", "package-lock.json", "./"]
 RUN npm install
