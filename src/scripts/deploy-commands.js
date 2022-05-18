@@ -8,7 +8,7 @@ const commandFiles = fs.readdirSync('./src/commands').filter((file) => file.ends
 
 commandFiles.forEach((file) => {
   // eslint-disable-next-line global-require,import/no-dynamic-require
-  const command = require(`./commands/${file}`);
+  const command = require(`../commands/${file}`);
   commands.push(command.data.toJSON());
 });
 
